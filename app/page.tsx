@@ -12,9 +12,7 @@ Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
 
-client.queries.sayHello({
-  name: "Maaartinch"
-})
+
 
 export default function App() {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
@@ -35,10 +33,17 @@ export default function App() {
     });
   }
 
+  function testLambda() {
+    client.queries.sayHello({
+      name: "Maaartinch"
+    })
+  }
+
   return (
     <main>
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
+      <button onClick={testLambda}>TEST LAMBDA</button>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>{todo.content}</li>
